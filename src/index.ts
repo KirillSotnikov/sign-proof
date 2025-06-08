@@ -52,7 +52,7 @@ export const signData = <T>(
     } else if (Buffer.isBuffer(payload)) {
         rawData = payload.toString('utf-8');
     } else {
-        if (options?.schema) {
+        if (options && options.schema) {
             if (!validateSchema(payload, options.schema)) {
                 throw new Error('Invalid payload: does not match schema');
             }
