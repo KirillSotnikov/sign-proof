@@ -1,0 +1,75 @@
+{
+  "name": "sign-proof",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Lightweight TypeScript library to sign and verify structured data (JSON, text, Buffer) with Ed25519 signatures and optional schema validation.",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.cjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "browser": {
+    "crypto": false
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "lint": "npm run types && npm run eslint && npm run prettier",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "types": "tsc --noemit",
+    "eslint": "eslint \"{src,test}/**/*.ts\"",
+    "eslint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
+    "prettier": "prettier --check src/**/*.ts",
+    "prettier:fix": "npm run prettier -- --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KirillSotnikov/sign-proof.git"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --no-error-on-unmatched-pattern --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --no-error-on-unmatched-pattern --fix"
+    ]
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@babel/eslint-parser": "7.27.1",
+    "@commitlint/cli": "19.8.0",
+    "@commitlint/config-conventional": "19.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "8.56.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-security": "^1.5.0",
+    "eslint-plugin-unused-imports": "~3.0.0",
+    "globals": "16.0.0",
+    "husky": "9.1.7",
+    "jest": "29.7.0",
+    "lint-staged": "15.5.2",
+    "prettier": "3.5.3",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "tsup": "^8.0.0",
+    "typescript": "5.0.4"
+  },
+  "author": "Kyrylo Sotnykov",
+  "license": "MIT"
+}

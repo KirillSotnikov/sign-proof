@@ -1,0 +1,111 @@
+env:
+  browser: false
+  node: true
+  es6: true
+  jest: true
+
+parser: "@typescript-eslint/parser"
+
+plugins:
+  - "@typescript-eslint/eslint-plugin"
+  - "unused-imports"
+  - "security"
+  - "import"
+
+extends:
+  - "airbnb-typescript/base"
+  - "plugin:security/recommended"
+  - "plugin:@typescript-eslint/eslint-recommended"
+  - "plugin:@typescript-eslint/recommended"
+#  - "plugin:prettier/recommended"
+  - "prettier"
+
+parserOptions:
+  sourceType: module
+  ecmaVersion: 2018
+  project: tsconfig.json
+
+rules:
+  "@typescript-eslint/return-await": off
+  "@typescript-eslint/no-throw-literal": off
+  "@typescript-eslint/interface-name-prefix": off
+  "@typescript-eslint/no-namespace": off
+  semi:
+    - error
+    - always
+  quotes:
+    - error
+    - single
+    - avoidEscape: true
+  "@typescript-eslint/explicit-function-return-type": off
+  "@typescript-eslint/explicit-module-boundary-types": off
+  "@typescript-eslint/no-explicit-any": off
+  "@typescript-eslint/member-delimiter-style": error
+  "@typescript-eslint/no-unused-vars": off
+  "@typescript-eslint/lines-between-class-members":
+    - error
+    - always
+    - exceptAfterSingleLine: true
+  unused-imports/no-unused-imports-ts: error
+  unused-imports/no-unused-vars-ts:
+    - error
+    - vars: all
+      varsIgnorePattern: "^_"
+      args: after-used
+      argsIgnorePattern: "^_"
+
+  object-curly-newline:
+    - error
+    - ObjectExpression:
+        minProperties: 6
+        multiline: true
+        consistent: true
+  node/no-unsupported-features/es-syntax: off
+  no-await-in-loop: 0
+  import/prefer-default-export: off
+  import/first: 2
+  import/newline-after-import: 2
+  import/no-duplicates: 2
+  max-len:
+    - error
+    - code: 120
+      ignoreStrings: true
+  eol-last: error
+  class-methods-use-this: 0
+  no-underscore-dangle:
+    - error
+    - allowAfterSuper: true
+      allowAfterThis: true
+  no-plusplus:
+    - error
+    - allowForLoopAfterthoughts: true
+  security/detect-object-injection: off
+  import/order:
+    - 2
+    - newlines-between: always
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+      pathGroups:
+        - pattern: "**"
+          group: external
+          position: before
+        - pattern: "**"
+          group: builtin
+          position: before
+        - pattern: "**"
+          group: sibling
+          position: before
+        - pattern: "**"
+          group: parent
+          position: before
+        - pattern: "**"
+          group: object
+          position: before
+
+settings:
+  import/resolver:
+    node:
+      extensions:
+        - ".ts"
+        - ".tsx"
