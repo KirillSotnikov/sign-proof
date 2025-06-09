@@ -1,6 +1,6 @@
 {
   "name": "sign-proof",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "type": "module",
   "description": "Lightweight TypeScript library to sign and verify structured data (JSON, text, Buffer) with Ed25519 signatures and optional schema validation.",
   "main": "dist/index.cjs",
@@ -28,7 +28,7 @@
     "eslint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
     "prettier": "prettier --check src/**/*.ts",
     "prettier:fix": "npm run prettier -- --write",
-    "prepublishOnly":  "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -48,10 +48,10 @@
     "tweetnacl-util": "^0.15.1"
   },
   "devDependencies": {
-    "@jest/globals": "^29.3.1",
     "@babel/eslint-parser": "7.27.1",
     "@commitlint/cli": "19.8.0",
     "@commitlint/config-conventional": "19.8.0",
+    "@jest/globals": "^29.3.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "8.56.0",
