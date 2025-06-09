@@ -6,6 +6,8 @@ import { decodeUTF8, encodeBase64, decodeBase64 } from 'tweetnacl-util';
 
 const ajv = new Ajv();
 
+export { JSONSchemaType } from 'ajv';
+
 export interface Proof {
     signature: string;
     signedAt: number;

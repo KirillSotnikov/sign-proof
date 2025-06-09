@@ -1,7 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-import { JSONSchemaType } from 'ajv';
 
-import { generateKeyPair, signData, verifyData } from '../src';
+import { generateKeyPair, signData, verifyData, JSONSchemaType } from '../src';
 
 describe('Sign data and verify', () => {
   describe('Object validation and verification', () => {
@@ -9,27 +8,27 @@ describe('Sign data and verify', () => {
       const schema: JSONSchemaType<{
         name: string;
         age: number;
-        data: { some: boolean };
+        education: { bachelor: boolean };
       }> = {
         type: 'object',
         properties: {
           name: { type: 'string' },
           age: { type: 'number' },
-          data: {
+          education: {
             type: 'object',
             properties: {
-              some: { type: 'boolean' },
+              bachelor: { type: 'boolean' },
             },
-            required: ['some'],
+            required: ['bachelor'],
           },
         },
-        required: ['name', 'age', 'data'],
+        required: ['name', 'age', 'education'],
         additionalProperties: false,
       };
 
       const { publicKey, privateKey } = generateKeyPair();
 
-      const person = { name: 'Alice', age: 30, data: { some: false } };
+      const person = { name: 'Alice', age: 30, education: { bachelor: false } };
 
       const proof = signData(person, privateKey, { schema });
 
